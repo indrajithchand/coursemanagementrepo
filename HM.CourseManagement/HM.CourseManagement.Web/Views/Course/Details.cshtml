@@ -1,0 +1,30 @@
+﻿@model HM.CourseManagement.Data.Course
+
+<div class="container">
+    <h1>Contents</h1>
+    <hr />
+    <br />
+
+    <table class="table table-striped table-bordered dt-responsive">
+        <tr>
+            <td valign="top"><b>@Html.DisplayNameFor(model => model.Name):</b></td>
+            <td>
+                @Html.DisplayFor(model => model.Name)
+            </td>
+        </tr>
+
+        <tr>
+            <td valign="top"><b>PreRequisites:</b></td>
+            <td>
+                @Html.DisplayFor(model => model.PreRequisites)
+            </td>
+        </tr>
+
+        <tr>
+            <td valign="top"><b>@Html.DisplayNameFor(model => model.Description):</b></td>
+            <td>
+                @Html.DisplayFor(model => model.Description)
+            </td>
+        </tr>
+    </table>
+</div>

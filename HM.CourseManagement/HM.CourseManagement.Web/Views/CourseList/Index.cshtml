@@ -1,0 +1,45 @@
+﻿@model IEnumerable<HM.CourseManagement.Data.CourseList>
+
+<div class="container">
+
+    <h1>Contents</h1>
+    <hr />
+    <br />
+    @if (!string.IsNullOrEmpty(Convert.ToString(TempData["Message"])))
+    {
+        <div class="text-center alert alert-danger">
+            <strong>
+                @TempData["Message"]
+            </strong>
+        </div>
+    }
+    <div style="width:90%; margin:0 auto;">
+        <table id="example" class="table table-info table-striped table-bordered dt-responsive nowrap">
+            <thead class="thead-light">
+                <tr>
+                    <th>Name</th>
+                    <th>Schedule</th>
+                    <th>Location</th>
+                    <th>Moderator</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var courselist in Model)
+                {
+                    <tr>
+                        <td>@courselist.Course.Name | <a href="/Course/Details/@courselist.Course.Id">Details</a></td>
+                        <td>@courselist.Schedule</td>
+                        <td>@courselist.Location</td>
+                        <td>@courselist.Faculty.Name</td>
+                        <td>
+                            @if (@courselist.Schedule > DateTime.Now)
+                            {
+                                <a href="@Url.Action("Create", "Enrollment", new { courseListId = @courselist.Id })">Enroll Now</a>
+                            }
+                        </td>
+                    </tr>
+                }
+        </table>
+    </div>
+</div>
